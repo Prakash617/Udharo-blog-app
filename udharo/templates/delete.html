@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Are you sure you want to delete? </h1>
+<form action="{% url 'delete' pid %}" method="post">
+    {% csrf_token %}
+    <button type="submit"  class="btn btn-danger">Yes</button>
+</form>
+
+<a href="{% url 'detail' cid %}">
+    <button type="button" class="btn btn-primary">NO</button>
+</a>
+
+{% endblock content %}
+
