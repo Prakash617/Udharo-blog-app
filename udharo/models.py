@@ -16,10 +16,10 @@ class Customer(models.Model):
     
     
 class  Product(models.Model):
-    customer = models.ForeignKey(Customer , on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer , on_delete=models.CASCADE, related_name="customerP")
     product_name = models.CharField(max_length=50)
-    quantity = models.IntegerField()
-    price = models.IntegerField()
+    quantity = models.PositiveIntegerField()
+    price = models.PositiveIntegerField()
     created_at = models.DateField(auto_now=True)
     updated_at = models.DateField(auto_now_add=True)
     
@@ -35,5 +35,8 @@ class  Product(models.Model):
     # def total_price(self):
     #     print(self.quantity* self.price)
     #     return self.quantity* self.price
+    
+    
+    
  
     

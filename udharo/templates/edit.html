@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+edit - {{product.id}}
+<br />
+<form action="{% url 'edit' product.id %}" method="post">
+{% csrf_token %}
+    {{product_form}}
+    <br>
+    <div class="d-flex justify-content-center my-3">
+        <div>
+
+            <input type="submit" class="btn btn-primary "  value="Edit">
+        </div>
+        
+    </div>
+</form>
+
+
+{% endblock content %}

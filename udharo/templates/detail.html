@@ -22,6 +22,7 @@
 
         {%else%}
 
+        <h1 class="text-center">Customer Name:{{customer.customer_name}}</h1>
         {% for product in products%}
         <li>Product Name:{{product.product_name}}</li>
         <li>Quantity:{{product.quantity}}</li>
@@ -32,20 +33,24 @@
         <div class="d-flex justify-content-evenly">
             <div>
 
-                <a href="{%url 'edit' product.id %}"></a><button type="button" class="btn btn-success">Edit</button>
+                <a href="{% url 'edit' product.id %}"><button type="button" class="btn btn-success">Edit{{product.id}}</button></a>
             </div>
             <div>
 
-                <a href="{%url 'delete' product.id %}"><button type="button" class="btn btn-danger">Delete{{product.id}}</button></a>
+                <a href="{% url 'delete' product.id %}"><button type="button" class="btn btn-danger">Delete{{product.id}}</button></a>
             </div>
         </div>
         <hr>
         {%endfor%}
         {%endif%}
         <div class="text-center">
-
-            <h4>Want to add items</h4>
-            <button class="btn btn-success">Add item</button>
+            <form action="{% url 'detail' customer.id %}" method="post">
+                {% csrf_token %}
+                
+                <h4>Want to add items</h4>
+                {{product_form.as_p}}
+                <button class="btn btn-success">Add item</button>
+            </form>
         </div>
     </ul>
 
